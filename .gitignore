@@ -22,6 +22,7 @@
 !/plugins/README
 !/plugins/redmine_omniauth_client
 !/plugins/redmine_stealth
+!/plugins/extended_fields
 /public/dispatch.*
 /public/plugin_assets
 /public/themes/*
