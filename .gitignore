@@ -26,6 +26,7 @@
 !/plugins/readme_at_repositories
 !/plugins/redmine_xls_export
 !/plugins/redmine_impasse
+!/plugins/redmine_plugin_views_revisions
 /public/dispatch.*
 /public/plugin_assets
 /public/themes/*
