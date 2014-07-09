@@ -22,7 +22,9 @@
 !/plugins/README
 !/plugins/redmine_omniauth_client
 !/plugins/redmine_stealth
+!/plugins/extended_fields
 !/plugins/readme_at_repositories
+!/plugins/redmine_plugin_views_revisions
 /public/dispatch.*
 /public/plugin_assets/*
 /public/themes/*
@@ -37,6 +39,7 @@
 /tmp/test/*
 /tmp/thumbnails/*
 /vendor/cache
+/vendor/rails
 *.rbc
 
 /.bundle
