@@ -51,6 +51,7 @@ class IssuesController < ApplicationController
   include IssuesHelper
   helper :timelog
   include Redmine::Export::PDF
+  include ExtendedFieldsHelper
 
   def index
     retrieve_query
