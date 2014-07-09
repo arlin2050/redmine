@@ -2,6 +2,8 @@ require_dependency 'custom_fields_helper'
 
 module ExtendedFieldsHelperPatch
 
+    include ExtendedFieldsHelper
+
     def self.included(base)
         if Redmine::VERSION::MAJOR > 2 || (Redmine::VERSION::MAJOR == 2 && Redmine::VERSION::MINOR >= 5)
             base.send(:include, InstanceMethods)
@@ -22,9 +24,8 @@ module ExtendedFieldsHelperPatch
         def show_extended_value(custom_value, html = true)
             if custom_value.value && !custom_value.value.empty? &&
                (template = find_custom_field_template(custom_value.custom_field))
-                render(:partial => template,
-                       :locals  => { :controller   => controller,
-                                     :project      => @project,
+                render_to_string(:partial => template,
+                       :locals  => { :project      => @project,
                                      :request      => request,
                                      :custom_field => custom_value,
                                      :html         => html })
