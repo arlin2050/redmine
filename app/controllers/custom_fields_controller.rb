@@ -1,5 +1,5 @@
 # Redmine - project management software
-# Copyright (C) 2006-2016  Jean-Philippe Lang
+# Copyright (C) 2006-2015  Jean-Philippe Lang
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -21,7 +21,7 @@ class CustomFieldsController < ApplicationController
   before_filter :require_admin
   before_filter :build_new_custom_field, :only => [:new, :create]
   before_filter :find_custom_field, :only => [:edit, :update, :destroy]
-  accept_api_auth :index
+  accept_api_auth :index, :update
 
   def index
     respond_to do |format|
@@ -43,7 +43,7 @@ class CustomFieldsController < ApplicationController
     if @custom_field.save
       flash[:notice] = l(:notice_successful_create)
       call_hook(:controller_custom_fields_new_after_save, :params => params, :custom_field => @custom_field)
-      redirect_to edit_custom_field_path(@custom_field)
+      redirect_to custom_fields_path(:tab => @custom_field.class.name)
     else
       render :action => 'new'
     end
@@ -54,18 +54,20 @@ class CustomFieldsController < ApplicationController
 
   def update
     if @custom_field.update_attributes(params[:custom_field])
-      call_hook(:controller_custom_fields_edit_after_save, :params => params, :custom_field => @custom_field)
       respond_to do |format|
         format.html {
           flash[:notice] = l(:notice_successful_update)
-          redirect_back_or_default edit_custom_field_path(@custom_field)
+          call_hook(:controller_custom_fields_edit_after_save, :params => params, :custom_field => @custom_field)
+          redirect_to custom_fields_path(:tab => @custom_field.class.name)
         }
-        format.js { render :nothing => true }
+        format.api {
+          render_api_ok
+        }
       end
     else
       respond_to do |format|
         format.html { render :action => 'edit' }
-        format.js { render :nothing => true, :status => 422 }
+        format.api  { render_validation_errors(@custom_field) }
       end
     end
   end
