@@ -127,7 +127,9 @@ module ImpassePlugin
                     :action => :index,
                     :project_id => project,
                     :id => test_plan_case.test_plan.id,
-                    :anchor => "testcase-#{test_plan_case.test_case.id}"
+                    :anchor => "testcase-#{test_plan_case.test_case.id}",
+                    :host => Setting.host_name,
+                    :protocol => Setting.protocol
                   }) <<
           "</td></tr>"
       end
@@ -154,7 +156,9 @@ module ImpassePlugin
                       :controller => :impasse_test_case,
                       :action => :index,
                       :project_id => project,
-                      :anchor => "testcase-#{test_case.id}"
+                      :anchor => "testcase-#{test_case.id}",
+                      :host => Setting.host_name,
+                      :protocol => Setting.protocol
                     }) <<
             "</td></tr>"
           
