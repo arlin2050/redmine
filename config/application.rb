@@ -76,6 +76,8 @@ module RedmineApp
       :key => '_redmine_session',
       :path => config.relative_url_root || '/'
 
+    config.action_dispatch.default_headers.merge!({'X-Frame-Options' => 'ALLOWALL'})
+
     if File.exists?(File.join(File.dirname(__FILE__), 'additional_environment.rb'))
       instance_eval File.read(File.join(File.dirname(__FILE__), 'additional_environment.rb'))
     end
