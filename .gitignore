@@ -20,6 +20,7 @@
 /log/mongrel_debug
 /plugins/*
 !/plugins/README
+!/plugins/redmine_omniauth_client
 /public/dispatch.*
 /public/plugin_assets/*
 /public/themes/*
