@@ -26,6 +26,7 @@
 !/plugins/extended_fields
 !/plugins/readme_at_repositories
 !/plugins/redmine_plugin_views_revisions
+!/plugins/redmine_xls_export
 /public/dispatch.*
 /public/plugin_assets/*
 /public/themes/*
