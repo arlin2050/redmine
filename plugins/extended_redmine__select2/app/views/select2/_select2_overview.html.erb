@@ -1,0 +1,22 @@
+<%= javascript_include_tag('select2.min.js', :plugin => 'redmine__select2') %>
+<script type="text/javascript">
+    function custome_select2(monSelect) {
+    ﻿   var custWidth = $(monSelect).prev().width();
+
+        var opts = {
+            width       : custWidth,
+            allowClear  : true
+        };
+
+        if($(monSelect).prev().length && $(monSelect).prev().html().search('tablissement') != -1)
+            opts['minimumInputLength'] = 3;
+
+        $(monSelect).select2(opts);
+    }
+
+    $(function() {
+        $('#issue-form select').each(function() {
+            custome_select2(this);
+        });
+    });
+</script>
