@@ -27,6 +27,8 @@
 !/plugins/redmine_plugin_views_revisions
 !/plugins/redmine_xls_export
 !/plugins/redmine_iframe
+!/plugins/extended_redmine__select2
+!/plugins/redmine__select2
 /public/dispatch.*
 /public/plugin_assets/*
 /public/themes/*

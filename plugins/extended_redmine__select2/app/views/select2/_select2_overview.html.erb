@@ -1,0 +1,20 @@
+<%= javascript_include_tag('select2.min.js', :plugin => 'redmine__select2') %>
+<script type="text/javascript">
+    function custome_select2(monSelect) {
+        var opts = {
+            width       : "element",
+            allowClear  : true
+        };
+
+        if($(monSelect).prev('label:first').html().search('tablissement') != -1)
+            opts['minimumInputLength'] = 3;
+
+        $(monSelect).select2(opts);
+    }
+
+    $(function() {
+        $('select').each(function() {
+            custome_select2(this);
+        });
+    });
+</script>
