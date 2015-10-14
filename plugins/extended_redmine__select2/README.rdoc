@@ -1,0 +1,3 @@
+= extended_redmine__select2
+
+Description goes here
