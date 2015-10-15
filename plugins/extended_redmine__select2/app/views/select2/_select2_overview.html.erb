@@ -6,7 +6,7 @@
             allowClear  : true
         };
 
-        if($(monSelect).prev('label:first').html().search('tablissement') != -1)
+        if($(monSelect).prev().html().search('tablissement') != -1)
             opts['minimumInputLength'] = 3;
 
         $(monSelect).select2(opts);
