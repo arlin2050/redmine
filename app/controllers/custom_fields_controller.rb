@@ -21,7 +21,7 @@ class CustomFieldsController < ApplicationController
   before_filter :require_admin
   before_filter :build_new_custom_field, :only => [:new, :create]
   before_filter :find_custom_field, :only => [:edit, :update, :destroy]
-  accept_api_auth :index, :update
+  accept_api_auth :index
 
   def index
     respond_to do |format|
@@ -54,21 +54,11 @@ class CustomFieldsController < ApplicationController
 
   def update
     if @custom_field.update_attributes(params[:custom_field])
-      respond_to do |format|
-        format.html {
-          flash[:notice] = l(:notice_successful_update)
-          call_hook(:controller_custom_fields_edit_after_save, :params => params, :custom_field => @custom_field)
-          redirect_to custom_fields_path(:tab => @custom_field.class.name)
-        }
-        format.api {
-          render_api_ok
-        }
-      end
+      flash[:notice] = l(:notice_successful_update)
+      call_hook(:controller_custom_fields_edit_after_save, :params => params, :custom_field => @custom_field)
+      redirect_to custom_fields_path(:tab => @custom_field.class.name)
     else
-      respond_to do |format|
-        format.html { render :action => 'edit' }
-        format.api  { render_validation_errors(@custom_field) }
-      end
+      render :action => 'edit'
     end
   end
 
