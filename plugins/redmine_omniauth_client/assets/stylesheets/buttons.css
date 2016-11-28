@@ -25,6 +25,7 @@
     /* overflow: hidden; */
     /* z-index: 100; */
     text-align: center;
+    cursor: pointer;
 }
 
 .or-container {
