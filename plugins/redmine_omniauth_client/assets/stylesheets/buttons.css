@@ -8,6 +8,7 @@
   padding: 0;
   width: 100%;
   background-color: #fff;
+  cursor: pointer;
 }
 
 .button-login-text {
@@ -25,7 +26,6 @@
     /* overflow: hidden; */
     /* z-index: 100; */
     text-align: center;
-    cursor: pointer;
 }
 
 .or-container {
@@ -54,4 +54,8 @@
   background-color: #fff;
   padding: 5px;
   font-size: medium;
+}
+
+.no-pointer {
+    cursor: default;
 }
