@@ -15,7 +15,7 @@
     }
 
     $(function() {
-        $('#issue-form select').each(function() {
+        $("#issue-form select[id!='checklist_template']").each(function() {
             custome_select2(this);
         });
     });
